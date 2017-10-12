@@ -25,6 +25,13 @@
                 "x15.c",
                 "fresh.c",
                 "phi1612.c",
+                "sph/sph_skein.h",
+                "sph/sph_jh.h",  
+                "sph/sph_cubehash.h", 
+                "sph/sph_fungue.h",
+                "sph/sph_gost.h",
+                "sph/sph_echo.h",
+
                 "tribus.c",
                 "sha3/sph_hefty1.c",
                 "sha3/sph_fugue.c",

@@ -4,9 +4,10 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
-#include "sph_jh.h"
-#include "sph_keccak.h"
-#include "sph_echo.h"
+#include "sph/sph_jh.h"
+#include "sph/sph_keccak.h"
+#include "sph/sph_echo.h"
+
 
 void tribus_hash(const char* input, char* output)
 {
