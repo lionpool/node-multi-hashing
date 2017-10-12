@@ -4,7 +4,7 @@
             "target_name": "multihashing",
             "sources": [
                 "multihashing.cc",
-                #"scryptjane.c",
+                "scryptjane.c",
                 "scryptn.c",
                 "keccak.c",
                 "skein.c",
@@ -13,6 +13,7 @@
                 "bcrypt.c",
                 "groestl.c",
                 "blake.c",
+                "gost.c",
                 "fugue.c",
                 "qubit.c",
                 "hefty1.c",
@@ -21,6 +22,15 @@
                 "x13.c",
                 "boolberry.cc",
                 "nist5.c",
+                "whirlpoolx.c",
+                "Lyra2RE.c",
+                "zr5.c",
+                "Lyra2.c",
+                "Sponge.c",
+                "Lyra2REV2.c",
+		        "Lyra2Z.c",
+
+
                 "sha1.c",
                 "x15.c",
                 "fresh.c",
@@ -33,16 +43,15 @@
                 "sph/sph_echo.h",
 
                 "tribus.c",
-                
+
                 "sha3/sph_hefty1.c",
-                "sha3/sph_fugue.c",
                 "sha3/aes_helper.c",
                 "sha3/sph_blake.c",
                 "sha3/sph_bmw.c",
                 "sha3/sph_cubehash.c",
                 "sha3/sph_echo.c",
-                "sha3/sph_gost.c",
                 "sha3/sph_groestl.c",
+                "sha3/sph_gost.c",
                 "sha3/sph_jh.c",
                 "sha3/sph_keccak.c",
                 "sha3/sph_luffa.c",
@@ -61,6 +70,8 @@
                 "crypto/hash.c",
                 "crypto/aesb.c",
                 "crypto/wild_keccak.cpp",
+                "sha3/sph_fugue.c",
+
             ],
             "include_dirs": [
                 "crypto",
