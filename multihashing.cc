@@ -772,6 +772,7 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("lyra2z").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2z)).ToLocalChecked());
     Nan::Set(target, Nan::New("neoscrypt").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(neoscrypt)).ToLocalChecked());
     Nan::Set(target, Nan::New("yescrypt").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(yescrypt)).ToLocalChecked());
+    Nan::Set(target, Nan::New("hsr").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(hsr)).ToLocalChecked());
     
 }
 
