@@ -25,6 +25,8 @@ extern "C" {
     #include "x15.h"
     #include "fresh.h"
     #include "phi1612.h"
+    #include "tribus.h"
+    
 }
 
 #include "boolberry.h"
@@ -547,7 +549,7 @@ NAN_METHOD(phi1612) {
     
         uint32_t input_len = Buffer::Length(target);
     
-        tribus_hash(input, output, input_len);
+        tribus_hash(input, output);
     
         info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
