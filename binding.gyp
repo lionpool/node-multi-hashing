@@ -30,6 +30,7 @@
                 "Lyra2REV2.c",
 		        "Lyra2Z.c",
                 "blake2s.c",
+                "sha3/sph_blake2s.c",
 
                 "sha1.c",
                 "x15.c",
