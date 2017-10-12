@@ -34,6 +34,7 @@ extern "C" {
     #include "Lyra2.h"
     #include "Lyra2REV2.h"
     #include "Lyra2Z.h"
+    #include "neoscrypt.h"
     
 }
 
@@ -680,7 +681,25 @@ NAN_METHOD(lyra2z) {
     lyra2z_hash(input, output);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+}
 
+NAN_METHOD(neoscrypt) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+
+    uint32_t input_len = Buffer::Length(target);
+
+    neoscrypt(input, output, 0);
+    
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
 
@@ -717,7 +736,8 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("lyra2re").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2re)).ToLocalChecked());
     Nan::Set(target, Nan::New("lyra2rev2").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2rev2)).ToLocalChecked());
     Nan::Set(target, Nan::New("lyra2z").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2z)).ToLocalChecked());
-
+    Nan::Set(target, Nan::New("neoscrypt").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(neoscrypt)).ToLocalChecked());
+    
 }
 
 NODE_MODULE(multihashing, init)

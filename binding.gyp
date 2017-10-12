@@ -31,7 +31,7 @@
 		        "Lyra2Z.c",
                 "blake2s.c",
                 "sha3/sph_blake2s.c",
-
+                "neoscrypt.c",
                 "sha1.c",
                 "x15.c",
                 "fresh.c",
