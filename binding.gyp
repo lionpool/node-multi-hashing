@@ -44,7 +44,9 @@
                 "sph/sph_echo.h",
 
                 "tribus.c",
-
+                "yescrypt/sha256_Y.c",
+                "yescrypt/yescrypt-best.c",
+                "yescrypt/yescryptcommon.c",
                 "sha3/sph_hefty1.c",
                 "sha3/aes_helper.c",
                 "sha3/sph_blake.c",
