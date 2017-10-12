@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include "nan.h"
 
+
 extern "C" {
     #include "bcrypt.h"
     #include "keccak.h"
@@ -24,8 +25,15 @@ extern "C" {
     #include "sha1.h"
     #include "x15.h"
     #include "fresh.h"
+    // news algos added by nosekefik
     #include "phi1612.h"
     #include "tribus.h"
+    #include "blake2s.h"
+    #include "gost.h"
+    #include "Lyra2RE.h"
+    #include "Lyra2.h"
+    #include "Lyra2REV2.h"
+    #include "Lyra2Z.h"
     
 }
 
@@ -534,6 +542,7 @@ NAN_METHOD(fresh) {
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
+// new algos added by nosekefik
 NAN_METHOD(phi1612) {
 
     if (info.Length() < 1)
@@ -574,6 +583,106 @@ NAN_METHOD(tribus) {
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 
 }
+NAN_METHOD(blake2s) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+
+    uint32_t input_len = Buffer::Length(target);
+
+    blake2s_hash(input, output);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+}
+
+NAN_METHOD(gost) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+
+    uint32_t input_len = Buffer::Length(target);
+
+    gost_hash(input, output);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+
+}
+
+NAN_METHOD(lyra2re) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+
+    uint32_t input_len = Buffer::Length(target);
+
+    lyra2re_hash(input, output);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+
+}
+
+NAN_METHOD(lyra2rev2) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+
+    uint32_t input_len = Buffer::Length(target);
+
+
+    lyra2rev2_hash(input, output, 8192);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+
+}
+
+NAN_METHOD(lyra2z) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+
+    uint32_t input_len = Buffer::Length(target);
+
+    lyra2z_hash(input, output);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+
+}
+
 
 
 
@@ -600,8 +709,15 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("sha1").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(sha1)).ToLocalChecked());
     Nan::Set(target, Nan::New("x15").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x15)).ToLocalChecked());
     Nan::Set(target, Nan::New("fresh").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(fresh)).ToLocalChecked());
+ // new algos added by nosekefik
     Nan::Set(target, Nan::New("phi1612").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(phi1612)).ToLocalChecked());    
     Nan::Set(target, Nan::New("tribus").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(tribus)).ToLocalChecked());
+    Nan::Set(target, Nan::New("blake2s").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(blake2s)).ToLocalChecked());
+    Nan::Set(target, Nan::New("gost").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(gost)).ToLocalChecked());
+    Nan::Set(target, Nan::New("lyra2re").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2re)).ToLocalChecked());
+    Nan::Set(target, Nan::New("lyra2rev2").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2rev2)).ToLocalChecked());
+    Nan::Set(target, Nan::New("lyra2z").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2z)).ToLocalChecked());
+
 }
 
 NODE_MODULE(multihashing, init)
