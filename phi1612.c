@@ -15,7 +15,7 @@
 #include "sph/sph_echo.h"
 
 
-void phi1612_hash(const char* input, char* output, uint32_t len)
+void phi1612_hash(const char* input, char* output)
 {
         sph_skein512_context        ctx_skein;
         sph_jh512_context           ctx_jh;
