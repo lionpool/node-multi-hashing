@@ -37,6 +37,7 @@ extern "C" {
     #include "neoscrypt.h"
     #include "yescrypt/yescrypt.h"
     #include "yescrypt/sha256_Y.h"
+    #include "hsr14.h"
     
 }
 
@@ -713,6 +714,24 @@ NAN_METHOD(yescrypt) {
     char *output = (char*) malloc(sizeof(char) * 32);
 	
 	yescrypt_hash(input, output);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+}
+
+NAN_METHOD(hsr) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+    
+    uint32_t len = Buffer::Length(target);
+	hsr_hash(input, output,len);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
