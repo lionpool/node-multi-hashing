@@ -34,15 +34,15 @@ void phi1612_hash(const char* input, char* output)
  	sph_jh512(&ctx_jh, (const void*) hash, 64);
  	sph_jh512_close(&ctx_jh, (void*) hash);
 
-        sph_cubehash512_init(&ctx_cubehash);
+    sph_cubehash512_init(&ctx_cubehash);
  	sph_cubehash512(&ctx_cubehash, (const void*) hash, 64);
  	sph_cubehash512_close(&ctx_cubehash, (void*) hash);
 
-        sph_fugue512_init(&ctx_fugue);
+    sph_fugue512_init(&ctx_fugue);
  	sph_fugue512(&ctx_fugue, (const void*) hash, 64);
  	sph_fugue512_close(&ctx_fugue, (void*) hash);
 
-        sph_gost512_init(&ctx_gost);
+    sph_gost512_init(&ctx_gost);
  	sph_gost512(&ctx_gost, (const void*) hash, 64);
  	sph_gost512_close(&ctx_gost, (void*) hash);
  
