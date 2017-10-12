@@ -18,8 +18,7 @@
 #include "sha3/sph_fugue.h"
 
 #include "sm3.h"
-
-//#include "common.h"
+#define _ALIGN(x) __attribute__ ((aligned(x)))
 
 void hsr_hash(const char* input, char* output, uint32_t len)
 {
@@ -39,7 +38,7 @@ void hsr_hash(const char* input, char* output, uint32_t len)
     sph_fugue512_context    ctx_fugue1;
 
     uint8_t _ALIGN(128) hash[64];
-
+    
     sph_blake512_init(&ctx_blake);
     sph_blake512(&ctx_blake, input, len);
     sph_blake512_close(&ctx_blake, hash);
