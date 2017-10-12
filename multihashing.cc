@@ -616,7 +616,7 @@ NAN_METHOD(gost) {
 
     uint32_t input_len = Buffer::Length(target);
 
-    gost_hash(input, output);
+    gost_hash(input, output,input_len);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 
