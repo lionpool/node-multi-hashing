@@ -657,10 +657,7 @@ NAN_METHOD(lyra2rev2) {
     char * input = Buffer::Data(target);
     char *output = (char*) malloc(sizeof(char) * 32);
 
-    uint32_t input_len = Buffer::Length(target);
-
-
-    lyra2rev2_hash(input, output, 8192);
+    lyra2re2_hash(input, output);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 
