@@ -8,7 +8,7 @@
 #include "sha3/sph_fugue.h"
 #include "gost.h"
 
-
+#define _ALIGN(x) __attribute__ ((aligned(x)))
 
 void skunk_hash(const char *input, char* output, uint32_t len)
 {
