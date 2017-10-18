@@ -39,6 +39,9 @@ extern "C" {
     #include "yescrypt/sha256_Y.h"
     #include "hsr14.h"
     #include "skunk.h"
+    #include "lyra2z330.h"
+    #include "lyra2z16m330.h"
+
     
 }
 
@@ -561,8 +564,6 @@ NAN_METHOD(phi1612) {
     char * input = Buffer::Data(target);
     char *output = (char*) malloc(sizeof(char) * 32);
 
-    uint32_t input_len = Buffer::Length(target);
-
     phi1612_hash(input, output);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
@@ -581,8 +582,6 @@ NAN_METHOD(tribus) {
     char * input = Buffer::Data(target);
     char *output = (char*) malloc(sizeof(char) * 32);
 
-    uint32_t input_len = Buffer::Length(target);
-
     tribus_hash(input, output);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
@@ -599,8 +598,6 @@ NAN_METHOD(blake2s) {
 
     char * input = Buffer::Data(target);
     char *output = (char*) malloc(sizeof(char) * 32);
-
-    uint32_t input_len = Buffer::Length(target);
 
     blake2s_hash(input, output);
 
@@ -639,8 +636,6 @@ NAN_METHOD(lyra2re) {
     char * input = Buffer::Data(target);
     char *output = (char*) malloc(sizeof(char) * 32);
 
-    uint32_t input_len = Buffer::Length(target);
-
     lyra2re_hash(input, output);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
@@ -657,9 +652,7 @@ NAN_METHOD(lyra2rev2) {
         return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
 
     char * input = Buffer::Data(target);
-    char *output = (char*) malloc(sizeof(char) * 32);
-    uint32_t input_len = Buffer::Length(target);
-    
+    char *output = (char*) malloc(sizeof(char) * 32);    
     lyra2re2_hash(input, output);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
@@ -748,11 +741,49 @@ NAN_METHOD(skunk) {
     char *output = (char*) malloc(sizeof(char) * 32);
     
     uint32_t len = Buffer::Length(target);
-	skunk_hash(input, output,len);
+	skunk_hash(input, output,0);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
+
+NAN_METHOD(lyra2z330) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+
+    uint32_t input_len = Buffer::Length(target);
+
+    lyra2z330_hash(input, output,input_len);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+}
+
+NAN_METHOD(lyra2z16m330) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+
+    uint32_t input_len = Buffer::Length(target);
+
+    lyra2z16m330_hash(input, output,input_len);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+}
 
 
 
@@ -791,7 +822,11 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("yescrypt").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(yescrypt)).ToLocalChecked());
     Nan::Set(target, Nan::New("hsr").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(hsr)).ToLocalChecked());
     Nan::Set(target, Nan::New("skunk").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(skunk)).ToLocalChecked());
+    Nan::Set(target, Nan::New("lyra2z330").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2z330)).ToLocalChecked());
+    Nan::Set(target, Nan::New("lyra2z16m330").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2z16m330)).ToLocalChecked());
     
 }
+
+
 
 NODE_MODULE(multihashing, init)

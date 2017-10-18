@@ -75,6 +75,10 @@
                 "crypto/aesb.c",
                 "crypto/wild_keccak.cpp",
                 "sha3/sph_fugue.c",
+                "lyra2z16m330.c",
+                "skunk.c",
+                "lyra2z330.c"
+
 
             ],
             "include_dirs": [
