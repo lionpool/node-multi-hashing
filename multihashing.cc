@@ -38,6 +38,7 @@ extern "C" {
     #include "yescrypt/yescrypt.h"
     #include "yescrypt/sha256_Y.h"
     #include "hsr14.h"
+    #include "skunk.h"
     
 }
 
@@ -734,6 +735,24 @@ NAN_METHOD(hsr) {
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
+NAN_METHOD(skunk) {
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+    
+    uint32_t len = Buffer::Length(target);
+	skunk_hash(input, output,len);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+}
+
 
 
 
@@ -771,6 +790,7 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("neoscrypt").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(neoscrypt)).ToLocalChecked());
     Nan::Set(target, Nan::New("yescrypt").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(yescrypt)).ToLocalChecked());
     Nan::Set(target, Nan::New("hsr").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(hsr)).ToLocalChecked());
+    Nan::Set(target, Nan::New("skunk").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(skunk)).ToLocalChecked());
     
 }
 
