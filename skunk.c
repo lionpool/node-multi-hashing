@@ -6,6 +6,8 @@
 #include "sha3/sph_skein.h"
 #include "sha3/sph_cubehash.h"
 #include "sha3/sph_fugue.h"
+#include "sha3/sph_gost.h"
+
 #include "gost.h"
 
 #define _ALIGN(x) __attribute__ ((aligned(x)))
