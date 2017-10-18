@@ -23,8 +23,10 @@ typedef uint8_t byte;
 
 typedef std::vector<byte> BinaryData;
 
-#endif
 
 #define _ALIGN(x) __attribute__ ((aligned(x)))
 
 extern void debuglog_hex(void *data, int len);
+
+#endif
+
