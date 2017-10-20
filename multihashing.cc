@@ -705,7 +705,7 @@ NAN_METHOD(yescrypt) {
     char * input = Buffer::Data(target);
     char *output = (char*) malloc(sizeof(char) * 32);
 	
-	yescrypt_ahash(input, output);
+	yescrypt_hash(input, output);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
