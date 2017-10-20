@@ -188,7 +188,7 @@ void m7_hash(const char* input, char* output)
 #define SW_DIVS 5
 //#define SW_MAX 1000
 
-void m7magi_hash(const char* input, char* output)
+void m7_hash_magi(const char* input, char* output)
 {
 //    unsigned int nnNonce;
     uint32_t pdata[32];

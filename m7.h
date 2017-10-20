@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 void m7_hash(const char* input, char* output);
-void m7magi_hash(const char* input, char* output);
+void m7_hash_magi(const char* input, char* output);
 
 #ifdef __cplusplus
 }
