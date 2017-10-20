@@ -3,6 +3,14 @@
         {
             "target_name": "multihashing",
             "sources": [
+                "m7m/m7m.c",
+                "m7m/magimath.c",
+                "m7m/hash/haval.c",
+                "m7m/hash/ripemd.c",
+                "m7m/hash/sha2.c",
+                "m7m/hash/sha2big.c",
+                "m7m/hash/tiger.c",
+                 "multihashing.cc",
                 "scryptjane.c",
                 "scryptn.c",
                 "keccak.c",
@@ -65,13 +73,8 @@
                 "sha3/sph_shabal.c",
                 "sha3/hamsi.c", 
                 "m7.c",
-                "m7m/m7m.c",
-                "m7m/magimath.c",
-                "m7m/hash/haval.c",
-                "m7m/hash/ripemd.c",
-                "m7m/hash/sha2.c",
-                "m7m/hash/sha2big.c",
-                "m7m/hash/tiger.c",
+                
+
                 "crypto/oaes_lib.c",
                 "crypto/c_keccak.c",
                 "crypto/c_groestl.c",
@@ -85,7 +88,6 @@
                 "lyra2z16m330.c",
                 "skunk.c",
                 "lyra2z330.c"
- "multihashing.cc",
 
             ],
             "include_dirs": [
