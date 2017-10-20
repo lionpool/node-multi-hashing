@@ -48,6 +48,8 @@ double exp_n2(double x1, double x2)
         return ( exp(-xt) );
     else if (xt > p6 - 1.e-200)
         return 0.;
+    else
+        return 0.;
 }
 
 void gauleg(double x1, double x2, double x[], double w[], int n)

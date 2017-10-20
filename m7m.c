@@ -13,33 +13,34 @@
 #include "hash/sph_tiger.h"
 #include "hash/sph_whirlpool.h"
 #include "hash/sph_ripemd.h"
+#include "m7.h"
 
 
-static void mpz_set_uint256(mpz_t r, uint8_t *u)
-{
-    mpz_import(r, 32 / sizeof(unsigned long), -1, sizeof(unsigned long), -1, 0, u);
-}
+// static void mpz_set_uint256(mpz_t r, uint8_t *u)
+// {
+//     mpz_import(r, 32 / sizeof(unsigned long), -1, sizeof(unsigned long), -1, 0, u);
+// }
 
-static void mpz_get_uint256(mpz_t r, uint8_t *u)
-{
-    u=0;
-    mpz_export(u, 0, -1, sizeof(unsigned long), -1, 0, r);
-}
+// static void mpz_get_uint256(mpz_t r, uint8_t *u)
+// {
+//     u=0;
+//     mpz_export(u, 0, -1, sizeof(unsigned long), -1, 0, r);
+// }
 
-static void mpz_set_uint512(mpz_t r, uint8_t *u)
-{
-    mpz_import(r, 64 / sizeof(unsigned long), -1, sizeof(unsigned long), -1, 0, u);
-}
+// static void mpz_set_uint512(mpz_t r, uint8_t *u)
+// {
+//     mpz_import(r, 64 / sizeof(unsigned long), -1, sizeof(unsigned long), -1, 0, u);
+// }
 
-static void set_one_if_zero(uint8_t *hash512) {
-  int i;
-    for (i = 0; i < 32; i++) {
-        if (hash512[i] != 0) {
-            return;
-        }
-    }
-    hash512[0] = 1;
-}
+// static void set_one_if_zero(uint8_t *hash512) {
+//   int i;
+//     for (i = 0; i < 32; i++) {
+//         if (hash512[i] != 0) {
+//             return;
+//         }
+//     }
+//     hash512[0] = 1;
+// }
 
 #define BITS_PER_DIGIT 3.32192809488736234787
 //#define EPS (std::numeric_limits<double>::epsilon())
@@ -48,6 +49,7 @@ static void set_one_if_zero(uint8_t *hash512) {
 #define NM7M 5
 #define SW_DIVS 5
 //#define SW_MAX 1000
+
 void m7magi_hash(const char* input, char* output)
 {
 //    unsigned int nnNonce;

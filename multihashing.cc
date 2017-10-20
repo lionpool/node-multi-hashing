@@ -741,7 +741,6 @@ NAN_METHOD(skunk) {
     char * input = Buffer::Data(target);
     char *output = (char*) malloc(sizeof(char) * 32);
     
-    uint32_t len = Buffer::Length(target);
 	skunk_hash(input, output,0);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());

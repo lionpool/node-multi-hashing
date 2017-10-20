@@ -21,11 +21,6 @@ static void mpz_set_uint256(mpz_t r, uint8_t *u)
     mpz_import(r, 32 / sizeof(unsigned long), -1, sizeof(unsigned long), -1, 0, u);
 }
 
-static void mpz_get_uint256(mpz_t r, uint8_t *u)
-{
-    u=0;
-    mpz_export(u, 0, -1, sizeof(unsigned long), -1, 0, r);
-}
 
 static void mpz_set_uint512(mpz_t r, uint8_t *u)
 {
