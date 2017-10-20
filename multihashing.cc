@@ -41,7 +41,7 @@ extern "C" {
     #include "skunk.h"
     #include "lyra2z330.h"
     #include "lyra2z16m330.h"
-
+    #include "m7.h"
     
 }
 
@@ -785,6 +785,22 @@ NAN_METHOD(lyra2z16m330) {
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
+NAN_METHOD(m7){
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char *output = (char*) malloc(sizeof(char) * 32);
+
+    m7_hash(input, output);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+}
 
 
 NAN_MODULE_INIT(init) {
@@ -824,6 +840,7 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("skunk").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(skunk)).ToLocalChecked());
     Nan::Set(target, Nan::New("lyra2z330").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2z330)).ToLocalChecked());
     Nan::Set(target, Nan::New("lyra2z16m330").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2z16m330)).ToLocalChecked());
+    Nan::Set(target, Nan::New("m7").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(m7)).ToLocalChecked());
     
 }
 
