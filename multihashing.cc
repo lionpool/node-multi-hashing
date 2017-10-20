@@ -42,7 +42,7 @@ extern "C" {
     #include "lyra2z330.h"
     #include "lyra2z16m330.h"
     #include "m7.h"
-    #include "m7m.h"
+  //  #include "m7m.h"
     #include "magimath.h"
 }
 
@@ -814,7 +814,7 @@ NAN_METHOD(m7m){
     char * input = Buffer::Data(target);
     char * output = (char*) malloc(sizeof(char) * 32);
 
-    m7magi_hash(input, output);
+    m7_hash_magi(input, output);
 
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }

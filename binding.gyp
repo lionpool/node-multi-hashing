@@ -3,9 +3,8 @@
         {
             "target_name": "multihashing",
             "sources": [
-                "m7m.c",
-                "m7m.h",
-                "magimath.c",
+                # "m7m.c",
+                # "m7m.h",
                 "hash/haval.c",
                 "hash/ripemd.c",
                 "hash/sha2.c",
@@ -73,9 +72,8 @@
                 "sha3/sph_whirlpool.c",
                 "sha3/sph_shabal.c",
                 "sha3/hamsi.c", 
+                "magimath.c",
                 "m7.c",
-                
-
                 "crypto/oaes_lib.c",
                 "crypto/c_keccak.c",
                 "crypto/c_groestl.c",
