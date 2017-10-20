@@ -3,7 +3,6 @@
         {
             "target_name": "multihashing",
             "sources": [
-                "multihashing.cc",
                 "scryptjane.c",
                 "scryptn.c",
                 "keccak.c",
@@ -86,7 +85,7 @@
                 "lyra2z16m330.c",
                 "skunk.c",
                 "lyra2z330.c"
-
+ "multihashing.cc",
 
             ],
             "include_dirs": [
