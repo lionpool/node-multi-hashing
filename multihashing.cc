@@ -42,8 +42,8 @@ extern "C" {
     #include "lyra2z330.h"
     #include "lyra2z16m330.h"
     #include "m7.h"
-    #include "m7m/m7m.h"
-    #include "m7m/magimath.h"
+    #include "m7m.h"
+    #include "magimath.h"
 }
 
 #include "boolberry.h"
