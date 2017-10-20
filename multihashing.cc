@@ -44,7 +44,6 @@ extern "C" {
     #include "m7.h"
     #include "m7m/m7m.h"
     #include "m7m/magimath.h"
-    
 }
 
 #include "boolberry.h"
@@ -814,7 +813,7 @@ NAN_METHOD(m7m){
         return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
 
     char * input = Buffer::Data(target);
-    char *output = (char*) malloc(sizeof(char) * 32);
+    char * output = (char*) malloc(sizeof(char) * 32);
 
     m7magi_hash(input, output);
 
