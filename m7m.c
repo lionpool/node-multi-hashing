@@ -50,7 +50,7 @@ static void set_one_if_zero(uint8_t *hash512) {
 //#define SW_MAX 1000
 void m7magi_hash(const char* input, char* output)
 {
-    unsigned int nnNonce;
+//    unsigned int nnNonce;
     uint32_t pdata[32];
     memcpy(pdata, input, 80);
 //    memcpy(&nnNonce, input+76, 4);

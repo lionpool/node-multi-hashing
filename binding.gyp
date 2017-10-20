@@ -4,6 +4,7 @@
             "target_name": "multihashing",
             "sources": [
                 "m7m.c",
+                "m7m.h",
                 "magimath.c",
                 "hash/haval.c",
                 "hash/ripemd.c",
