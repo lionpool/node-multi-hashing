@@ -91,6 +91,35 @@
                 "lyra2z330.c"
 
             ],
+            'conditions': [
+                ['OS=="linux"',
+                  {
+                    'link_settings': {
+                      'libraries': [
+                        '-lgmp'
+                      ]
+                    }
+                  }
+                ],
+                ['OS=="mac"',
+                  {
+                    'link_settings': {
+                      'libraries': [
+                        '-lgmp'
+                      ]
+                    }
+                  }
+                ],
+                ['OS=="win"',
+                  {
+                    'link_settings': {
+                      'libraries': [
+                        '-lgmp.lib'
+                      ],
+                    }
+                  }
+                ]
+              ],
             "include_dirs": [
                 "crypto",
                 "<!(node -e \"require('nan')\")"
