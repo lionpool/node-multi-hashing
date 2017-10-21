@@ -7,12 +7,12 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "hash/sph_sha2.h"
-#include "hash/sph_keccak.h"
-#include "hash/sph_haval.h"
-#include "hash/sph_tiger.h"
-#include "hash/sph_whirlpool.h"
-#include "hash/sph_ripemd.h"
+#include "sha3/sph_sha2.h"
+#include "sha3/sph_keccak.h"
+#include "sha3/sph_haval.h"
+#include "sha3/sph_tiger.h"
+#include "sha3/sph_whirlpool.h"
+#include "sha3/sph_ripemd.h"
 
 #include "magimath.h"
 
