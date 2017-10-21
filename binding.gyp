@@ -72,6 +72,8 @@
                 "sha3/sph_whirlpool.c",
                 "sha3/sph_shabal.c",
                 "sha3/hamsi.c", 
+                "sha3/sph_sha2.c",
+                "sha3/sph_haval.c",
                 "magimath.c",
                 "m7.c",
                 "crypto/oaes_lib.c",
@@ -87,6 +89,7 @@
                 "lyra2z16m330.c",
                 "skunk.c",
                 "lyra2z330.c"
+                "xevan.c"
 
             ],
             'conditions': [

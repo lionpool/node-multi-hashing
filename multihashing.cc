@@ -44,6 +44,7 @@ extern "C" {
     #include "m7.h"
   //  #include "m7m.h"
     #include "magimath.h"
+    #include "xevan.h"
 }
 
 #include "boolberry.h"
@@ -819,6 +820,25 @@ NAN_METHOD(m7m){
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
+NAN_METHOD(xevan){
+    if (info.Length() < 1)
+    return THROW_ERROR_EXCEPTION("You must provide one argument.");
+    
+    Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+    
+    if(!Buffer::HasInstance(target))
+        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
+
+    char * input = Buffer::Data(target);
+    char * output = (char*) malloc(sizeof(char) * 32);
+    
+    uint32_t input_len = Buffer::Length(target);
+    
+    xevan_hash(input, output,input_len);
+
+    info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
+}
+
 
 NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("quark").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(quark)).ToLocalChecked());
@@ -859,6 +879,7 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("lyra2z16m330").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(lyra2z16m330)).ToLocalChecked());
     Nan::Set(target, Nan::New("m7").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(m7)).ToLocalChecked());
     Nan::Set(target, Nan::New("m7m").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(m7m)).ToLocalChecked());
+    Nan::Set(target, Nan::New("xevan").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(xevan)).ToLocalChecked());
     
 }
 
