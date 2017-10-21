@@ -3,8 +3,6 @@
         {
             "target_name": "multihashing",
             "sources": [
-                # "m7m.c",
-                # "m7m.h",
                 "hash/haval.c",
                 "hash/ripemd.c",
                 "hash/sha2.c",
@@ -58,6 +56,7 @@
                 "sha3/sph_hefty1.c",
                 "sha3/aes_helper.c",
                 "sha3/sph_blake.c",
+                "sha3/sph_blake.h",
                 "sha3/sph_bmw.c",
                 "sha3/sph_cubehash.c",
                 "sha3/sph_echo.c",
@@ -90,7 +89,6 @@
                 "skunk.c",
                 "lyra2z330.c",
                 "xevan.c"
-
             ],
             'conditions': [
                 ['OS=="linux"',
