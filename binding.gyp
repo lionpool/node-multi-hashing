@@ -10,7 +10,7 @@
                 "hash/sha2.c",
                 "hash/sha2big.c",
                 "hash/tiger.c",
-                 "multihashing.cc",
+                "multihashing.cc",
                 "scryptjane.c",
                 "scryptn.c",
                 "keccak.c",
@@ -88,7 +88,7 @@
                 "sha3/sph_fugue.c",
                 "lyra2z16m330.c",
                 "skunk.c",
-                "lyra2z330.c"
+                "lyra2z330.c",
                 "xevan.c"
 
             ],
