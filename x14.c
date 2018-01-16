@@ -18,7 +18,6 @@
 #include "sha3/sph_hamsi.h"
 #include "sha3/sph_fugue.h"
 #include "sha3/sph_shabal.h"
-#include "sha3/sph_whirlpool.h"
 
 void x14_hash(const char* input, char* output, uint32_t len)
 {
