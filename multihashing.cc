@@ -45,7 +45,7 @@ extern "C" {
   //  #include "m7m.h"
     #include "magimath.h"
     #include "xevan.h"
-    #include "haval.h"
+    #include "x17.h"
 }
 
 #include "boolberry.h"
@@ -836,7 +836,7 @@ NAN_METHOD(xevan){
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
-NAN_METHOD(haval){
+NAN_METHOD(x17){
     if (info.Length() < 1)
     return THROW_ERROR_EXCEPTION("You must provide one argument.");
     Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
@@ -847,7 +847,7 @@ NAN_METHOD(haval){
     char * output = (char*) malloc(sizeof(char) * 32);
    
     uint32_t input_len = Buffer::Length(target);
-    haval_hash(input, output,input_len);
+    x17_hash(input, output,input_len);
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 }
 
@@ -891,7 +891,7 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("m7").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(m7)).ToLocalChecked());
     Nan::Set(target, Nan::New("m7m").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(m7m)).ToLocalChecked());
     Nan::Set(target, Nan::New("xevan").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(xevan)).ToLocalChecked());
-    Nan::Set(target, Nan::New("haval").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(xevan)).ToLocalChecked());
+    Nan::Set(target, Nan::New("x17").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(xevan)).ToLocalChecked());
     
 }
 
