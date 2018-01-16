@@ -896,6 +896,10 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("sha1").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(sha1)).ToLocalChecked());
     Nan::Set(target, Nan::New("x15").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x15)).ToLocalChecked());
     Nan::Set(target, Nan::New("fresh").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(fresh)).ToLocalChecked());
+// added x14 & x17. not sure if it works. Lion
+    Nan::Set(target, Nan::New("x14").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x14)).ToLocalChecked());
+    Nan::Set(target, Nan::New("x17").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x17)).ToLocalChecked());	
+	
  // new algos added by nosekefik
     Nan::Set(target, Nan::New("phi1612").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(phi1612)).ToLocalChecked());    
     Nan::Set(target, Nan::New("tribus").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(tribus)).ToLocalChecked());
@@ -913,10 +917,7 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("m7").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(m7)).ToLocalChecked());
     Nan::Set(target, Nan::New("m7m").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(m7m)).ToLocalChecked());
     Nan::Set(target, Nan::New("xevan").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(xevan)).ToLocalChecked());
-// added x14 & x17. not sure if it works. Lion
-    Nan::Set(target, Nan::New("x14").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x14)).ToLocalChecked());
-    Nan::Set(target, Nan::New("x17").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x17)).ToLocalChecked());
-    
+   
 }
 
 
