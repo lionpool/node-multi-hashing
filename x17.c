@@ -39,6 +39,9 @@ void x17_hash(const char* input, char* output, uint32_t len)
     sph_fugue512_context	ctx_fugue1;
     sph_shabal512_context       ctx_shabal1;
     sph_whirlpool_context       ctx_whirlpool1;
+    sph_sha512_context       ctx_sha512;
+    sph_haval256_5_context   ctx_haval;
+
 
     //these uint512 in the c++ source of the client are backed by an array of uint32
     uint32_t hashA[16], hashB[16];
