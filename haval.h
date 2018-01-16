@@ -1,5 +1,5 @@
-#ifndef HAVAL_H
-#define HAVAL_H
+#ifndef X17_H
+#define X17_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -7,7 +7,7 @@ extern "C" {
 
 #include <stdint.h>
 
-void haval_hash(const char* input, char* output, uint32_t len);
+void x17_hash(const char* input, char* output, uint32_t len);
 
 #ifdef __cplusplus
 }
