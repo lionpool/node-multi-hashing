@@ -45,7 +45,7 @@ extern "C" {
   //  #include "m7m.h"
     #include "magimath.h"
     #include "xevan.h"
-    #include "sha3/sph_haval.h"
+    #include "haval.h"
 }
 
 #include "boolberry.h"
