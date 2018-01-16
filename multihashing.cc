@@ -914,8 +914,8 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("m7m").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(m7m)).ToLocalChecked());
     Nan::Set(target, Nan::New("xevan").ToLocalChecked(),Nan::GetFunction(Nan::New<v8::FunctionTemplate>(xevan)).ToLocalChecked());
 // added x14 & x17. not sure if it works. Lion
-    Nan::Set(target, Nan::New("x15").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x14)).ToLocalChecked());
-    Nan::Set(target, Nan::New("x15").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x17)).ToLocalChecked());
+    Nan::Set(target, Nan::New("x14").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x14)).ToLocalChecked());
+    Nan::Set(target, Nan::New("x17").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(x17)).ToLocalChecked());
     
 }
 
