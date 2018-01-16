@@ -86,7 +86,8 @@
                 "skunk.c",
                 "lyra2z330.c",
                 "xevan.c",
-		"x14.c"
+		"x14.c",
+		"x17.c"
             ],
             'conditions': [
                 ['OS=="linux"',
